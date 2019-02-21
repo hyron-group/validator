@@ -1,0 +1,2 @@
+fontware:
+  param_checker: "./param-checker/validator_fw"
