@@ -18,7 +18,7 @@ after install, you need to declare this plugins into enablePlugins()
 ```js
 ...
 myApp.enablePlugins({
-    param_checker : require('@hyron/param-checker')
+    param_checker : require('@hyron/validator')
 })
 
 ```

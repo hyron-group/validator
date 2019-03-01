@@ -1,9 +1,7 @@
-var i = 0;
-function f(){
-	while(i++<10){
-		if(i>3) return i;
-	}
+function a(func, name=func.name){
+    console.log("name : "+name);
 }
 
-f()
-console.log(i)
+function f(){}
+
+a(f);
