@@ -1,7 +1,3 @@
-function a(func, name=func.name){
-    console.log("name : "+name);
-}
+var validator = require("../");
 
-function f(){}
-
-a(f);
+validator.registerValidator
