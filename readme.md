@@ -176,21 +176,57 @@ class Demo {
 **If not**, you also used it as a normal library by add this line inside function
 
 ```js
-validator(argument.callee);
+var checker = validator.getValidator(current_function_name);
+checker(Array.from(arguments));
+```
+
+And add follow line to bellow of ``js`` file
+```js
+validator.registerValidator(target_function);
 ```
 
 Example :
 ```js
-var validator = require("@hyron/validator");
+var validator = require("../");
 
-function upload(name, file){
+function test(var1, var2){
     /**
-    * @valid name(string)
-    */
-    
-    validator(argument.callee);
+     * @check var1 {type:string, size: 10} - check if var1 is string with length < 10
+     * @ignore var2(string) - ignore if var2 is string
+     */
+
+     var checker = validator.getValidator(test.name);
+     checker(Array.from(arguments));
 }
+
+validator.registerValidator(test);
 ```
 
 # API Reference
 
+>## function **registerValidator**( func, eventName ? ) : (args) => void
+
+  Used to register validate for a function by comment. Valid options include :
+  - [@check](../readme.md) : Check if the input parameter meets the condition
+ - [@ignore](../) : remove values from input if matched
+  - [@accept](../) : filter values from input if matched
+  - [@valid](../) : Only accept input parameters when it matches correctly
+  
+  To know more about how to write validate condition, please visit [guide](https://github.com/hyron-group/plugins-validator/blob/master/readme.md)
+  
+  ### **params**
+  - **func** ( function ) : target function will be used to parser validate condition
+  - **eventName** ( string ) : a name represent for this validator. Default is func.name
+  
+  ### **return**
+  - **validator** ( function (args)=>void ) : a function that could be used to check function input data
+
+> ## function **getValidator**( eventName ) : (args) => void
+
+Used to get a registered validator that have been registered before to check input data
+  
+### **params**
+- **eventName** ( string ) : a name represent for this validator. Default is func.name
+  
+### **return**
+- **validator** ( function (args)=>void ) : a function that could be used to check function input data

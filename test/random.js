@@ -1,3 +1,5 @@
-var validator = require("../");
+function f(var1, var2){
+    console.log();
+}
 
-validator.registerValidator
+f("asd",43)

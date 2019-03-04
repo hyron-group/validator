@@ -103,29 +103,6 @@ function registerValidator(func, eventName = func.name) {
     return validator;
 }
 
-
-function test(var1, var2) {
-    /**
-     * @accept var1 {
-     *      k1,k2
-     * }
-     * 
-     * @check var1 {size:10, type:*}
-     * 
-     */
-
-    /*
-    * @accept var1 (string)
-    @ignore var2 (number)
-    */
-
-    // @check var2 {type:*}
-    registerValidator(arguments.callee);
-    return "asda"
-}
-
-test()
-
 module.exports = {
     registerValidator,
     getValidator
