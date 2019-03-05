@@ -2,9 +2,10 @@ const commentParser = require("../lib/commentParser.js");
 const structParser = require("../lib/structDefine");
 const HTTPMessage = require("hyron/lib/HttpMessage");
 const StatusCode = require("hyron/lib/StatusCode");
-const argumentParser = require("hyron/plugins/param-parser/lib/argumentParser.js");
+const argumentParser = require("hyron/plugins/param-parser/lib/argumentParser");
 const conditionMapping = require("../lib/conditionMapping");
 const stringToObject = require("hyron/lib/objectParser");
+const objectEditor = require("hyron/lib/objectEditor");
 
 var validatorHolder = {};
 
@@ -23,8 +24,19 @@ function getStructValidator(tag, index, varName, condition) {
 
     if (tag == "ignore") {
         var onChecked = (isMatch, key, val, origin) => {
+            console.log("isMatch : " + isMatch);
+            console.log("key : " + key);
+            console.log("val : " + val);
+            console.log("origin : " + origin);
+            console.log();
+
             if (isMatch) {
-                delete origin[key];
+                if (typeof origin == 'object') {
+                    delete origin[key];
+                } else {
+                    throw new HTTPMessage(StatusCode.NOT_ACCEPTABLE,
+                        `argument '${key}' is prohibited at variable '${val}'`);
+                }
             }
         }
     } else if (tag == "accept") {
@@ -54,6 +66,7 @@ function getStructValidator(tag, index, varName, condition) {
 function getCheckerEvents(func) {
     var rawFunc = func.toString();
     var comment = commentParser(rawFunc);
+    console.log(comment);
     var argList = argumentParser(rawFunc);
     var validatorHolder = [];
 
@@ -88,7 +101,6 @@ function registerValidator(func, eventName = func.name) {
     if (validator != null) return validator;
 
     var checkerEvents = getCheckerEvents(func);
-    console.log(checkerEvents);
     if (checkerEvents == null) return;
 
     validator = (argsList) => {
@@ -98,7 +110,6 @@ function registerValidator(func, eventName = func.name) {
     }
 
     validatorHolder[eventName] = validator;
-    console.log(validatorHolder);
 
     return validator;
 }

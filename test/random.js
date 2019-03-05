@@ -1,5 +1,1 @@
-function f(var1, var2){
-    console.log();
-}
-
-f("asd",43)
+var a = ["hello","world"];
