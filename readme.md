@@ -33,10 +33,10 @@ To used **Validator**, you need to declare condition first inside function.
 Attentive : this package **only support for multi-line comment type** (/** or /*). For better support by IDE, you should used /** to declare condition
 
 **Validator** support for 4 type of validator via comment :
-- **@check** : used to check value of a argument with a variety of conditions
-- **@ignore** : used to remove properties from argument if it match conditions
-- **@accept** : used to select the parts to be retained by an argument if it match conditions
-- **@valid** : used to check if argument is match with condition declared
+- [**@check**](#1-check--check-a-argument-if-match) : used to check value of a argument with a variety of conditions
+- [**@ignore**](#2-ignore--remove-a-nominated-properties-from-argument) : used to remove properties from argument if it match conditions
+- [**@accept**](#3-except--filter-out-the-required-values) : used to select the parts to be retained by an argument if it match conditions
+- [**@valid**](#4-valid--strictly-check-the-input-value) : used to check if argument is match with condition declared
 
 Example
 ```js
@@ -189,7 +189,7 @@ It also used a [structure-parser](./docs/structure-parser.engine.md) engine like
 
 It could be used to against a no-sql inject, or for safe value before use this
 
-##. ``@valid`` : strictly check the input value
+## 4. ``@valid`` : strictly check the input value
 
 ### **Syntax**
 ```js
