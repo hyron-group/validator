@@ -27,12 +27,13 @@ function getStructValidator(tag, index, varName, condition) {
             console.log("isMatch : " + isMatch);
             console.log("key : " + key);
             console.log("val : " + val);
-            console.log("origin : " + origin);
+            console.log("origin : ");
+            console.log(origin)
             console.log();
 
             if (isMatch) {
                 if (typeof origin == 'object') {
-                    delete origin[key];
+                    objectEditor.replaceValue(key, origin, undefined);
                 } else {
                     throw new HTTPMessage(StatusCode.NOT_ACCEPTABLE,
                         `argument '${key}' is prohibited at variable '${val}'`);

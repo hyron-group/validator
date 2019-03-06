@@ -14,6 +14,6 @@
   "dependencies": {
     "chai": "^4.2.0",
     "chalk": "^2.4.2",
-    "hyron": "^2.5.12"
+    "hyron": "^2.5.13"
   }
 }

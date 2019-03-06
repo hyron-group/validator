@@ -68,7 +68,63 @@ function demo(arg1, arg2, arg3, arg4){
 }
 ```
 
-## Description
+to see more about attributes, please read : [Validator Attribute](#attributes)
+
+# Step 3 : bind target function to used
+
+**If you used hyron framework**, You just need to turn on it on necessary router
+
+```js
+class Demo {
+    static requestConfig(){
+        return {
+            upload : {
+                ...
+                fontware : ["validator"]
+            }
+        }
+    }
+
+    upload(name, file){
+        /**
+         * @valid name(string)
+         */
+        ...
+    }
+}
+```
+
+**If not**, you also used it as a normal library by add this line inside function to check input data
+
+```js
+var checker = validator.getValidator(current_function_name);
+checker(Array.from(arguments));
+```
+
+And add follow line to bellow of ``js`` file to register a validator
+```js
+validator.registerValidator(target_function);
+```
+
+Example :
+```js
+var validator = require("../");
+
+function test(var1, var2){
+    /**
+     * @check var1 {type:string, size: 10} - check if var1 is string with length < 10
+     * @ignore var2(string) - ignore if var2 is string
+     */
+
+     var checker = validator.getValidator(test.name);
+     checker(Array.from(arguments));
+}
+
+validator.registerValidator(test);
+```
+
+
+# Attributes
 
 ## 1. ``@check`` : check a argument if match
 
@@ -117,7 +173,7 @@ As you see, **@ignore** could used to check value of a variable, see if it fits 
 
 It could be used to against a no-sql inject, or for safe value before use this
 
-## 2. ``@except`` : filter out the required values
+## 3. ``@except`` : filter out the required values
 
 ### **Syntax**
 ```js
@@ -133,7 +189,7 @@ It also used a [structure-parser](./docs/structure-parser.engine.md) engine like
 
 It could be used to against a no-sql inject, or for safe value before use this
 
-## 2. ``@valid`` : strictly check the input value
+##. ``@valid`` : strictly check the input value
 
 ### **Syntax**
 ```js
@@ -148,59 +204,6 @@ It could be used to against a no-sql inject, or for safe value before use this
 It also used a [structure-parser](./docs/structure-parser.engine.md) engine like ``@ignore`` abort
 
 It could be used to against a no-sql inject, or for safe value before use this
-
-## Step 3 : bind target function to used
-
-**If you used hyron framework**, You just need to turn on it on necessary router
-
-```js
-class Demo {
-    static requestConfig(){
-        return {
-            upload : {
-                ...
-                fontware : ["validator"]
-            }
-        }
-    }
-
-    upload(name, file){
-        /**
-         * @valid name(string)
-         */
-        ...
-    }
-}
-```
-
-**If not**, you also used it as a normal library by add this line inside function
-
-```js
-var checker = validator.getValidator(current_function_name);
-checker(Array.from(arguments));
-```
-
-And add follow line to bellow of ``js`` file
-```js
-validator.registerValidator(target_function);
-```
-
-Example :
-```js
-var validator = require("../");
-
-function test(var1, var2){
-    /**
-     * @check var1 {type:string, size: 10} - check if var1 is string with length < 10
-     * @ignore var2(string) - ignore if var2 is string
-     */
-
-     var checker = validator.getValidator(test.name);
-     checker(Array.from(arguments));
-}
-
-validator.registerValidator(test);
-```
 
 # API Reference
 

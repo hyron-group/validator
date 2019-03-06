@@ -55,22 +55,26 @@ describe("test @ignore", () => {
              */
             var checker = validator.getValidator(testArrayType.name);
             checker(Array.from(arguments));
+            console.log("array arg : ");
+            console.log(arg);
             return arg;
         }
 
         validator.registerValidator(testArrayType);
 
-        should.equal(
-            testArrayType([
+        expect(()=>{
+            return testArrayType([
                 ["ignore string"]
-            ]), [],
-            "string argument should be removed");
+            ])
+        }).to.eql([
+            [undefined]
+        ], "string argument should be removed")
 
         should.equal(
             testArrayType([
                 [12]
             ]), [12],
-            "number argument should be exist"); 
+            "number argument should be exist");
 
     })
 
