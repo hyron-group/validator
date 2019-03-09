@@ -35,22 +35,12 @@ To used **Validator**, you need to declare condition first inside function.
 Attentive : this package **only support for multi-line comment type** (/** or /*). For better support by IDE, you should used /** to declare condition
 
 **Validator** support for 4 type of validator via comment :
-- [Usage](#usage)
-  - [**Step 1 : Install**](#step-1--install)
-  - [**Step 2 : Declare condition**](#step-2--declare-condition)
-- [Step 3 : bind target function to used](#step-3--bind-target-function-to-used)
-- [Attributes](#attributes)
   - [1. ``@check`` : check a argument if match](#1-check--check-a-argument-if-match)
-    - [**syntax**](#syntax)
   - [2. ``@ignore`` : remove a nominated properties from argument](#2-ignore--remove-a-nominated-properties-from-argument)
-    - [**Syntax**](#syntax)
   - [3. ``@except`` : filter out the required values](#3-except--filter-out-the-required-values)
-    - [**Syntax**](#syntax-1)
   - [4. ``@valid`` : strictly check the input value](#4-valid--strictly-check-the-input-value)
-    - [**Syntax**](#syntax-2)
-- [API Reference](#api-reference)
-    - [**params**](#params)
-    - [**return**](#return)
+
+# API Reference
 
 Example
 ```js
