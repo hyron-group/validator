@@ -10,6 +10,8 @@
 - Support accept only values in args with **@accept**
 - Support valid exactly values in args with **@valid**
 - Support to check args value with **@check**
+- Friendly with the [Hyron Framework](https://docs.hyron.org)
+- Compatible with Library Interface
 - High performance
 
 # Usage
@@ -18,12 +20,12 @@
 
 By **NPM** :
 ```shell
-npm i @hyron/param-checker
+npm i @hyron/validator
 ```
 
 By **YARN** :
 ```shell
-yarn add @hyron/param-checker
+yarn add @hyron/validator
 ```
 
 ## **Step 2 : Declare condition**
@@ -33,10 +35,22 @@ To used **Validator**, you need to declare condition first inside function.
 Attentive : this package **only support for multi-line comment type** (/** or /*). For better support by IDE, you should used /** to declare condition
 
 **Validator** support for 4 type of validator via comment :
-- [**@check**](#1-check--check-a-argument-if-match) : used to check value of a argument with a variety of conditions
-- [**@ignore**](#2-ignore--remove-a-nominated-properties-from-argument) : used to remove properties from argument if it match conditions
-- [**@accept**](#3-except--filter-out-the-required-values) : used to select the parts to be retained by an argument if it match conditions
-- [**@valid**](#4-valid--strictly-check-the-input-value) : used to check if argument is match with condition declared
+- [Usage](#usage)
+  - [**Step 1 : Install**](#step-1--install)
+  - [**Step 2 : Declare condition**](#step-2--declare-condition)
+- [Step 3 : bind target function to used](#step-3--bind-target-function-to-used)
+- [Attributes](#attributes)
+  - [1. ``@check`` : check a argument if match](#1-check--check-a-argument-if-match)
+    - [**syntax**](#syntax)
+  - [2. ``@ignore`` : remove a nominated properties from argument](#2-ignore--remove-a-nominated-properties-from-argument)
+    - [**Syntax**](#syntax)
+  - [3. ``@except`` : filter out the required values](#3-except--filter-out-the-required-values)
+    - [**Syntax**](#syntax-1)
+  - [4. ``@valid`` : strictly check the input value](#4-valid--strictly-check-the-input-value)
+    - [**Syntax**](#syntax-2)
+- [API Reference](#api-reference)
+    - [**params**](#params)
+    - [**return**](#return)
 
 Example
 ```js

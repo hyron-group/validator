@@ -33,7 +33,10 @@ function getStructValidator(tag, index, varName, condition) {
 
             if (isMatch) {
                 if (typeof origin == 'object') {
-                    objectEditor.replaceValue(key, origin, undefined);
+                    // objectEditor.replaceValue(key, origin, (child)=>{
+                    //     console.log(child);
+                    // });
+                    objectEditor.replaceValue(key, origin,undefined);
                 } else {
                     throw new HTTPMessage(StatusCode.NOT_ACCEPTABLE,
                         `argument '${key}' is prohibited at variable '${val}'`);

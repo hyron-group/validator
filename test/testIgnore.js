@@ -55,27 +55,92 @@ describe("test @ignore", () => {
              */
             var checker = validator.getValidator(testArrayType.name);
             checker(Array.from(arguments));
-            console.log("array arg : ");
-            console.log(arg);
             return arg;
         }
 
         validator.registerValidator(testArrayType);
 
-        expect(()=>{
-            return testArrayType([
+        expect(
+            testArrayType([
                 ["ignore string"]
             ])
-        }).to.eql([
+        ).to.eql([
             [undefined]
-        ], "string argument should be removed")
+        ], "string argument should be removed");
 
-        should.equal(
+
+        expect(
             testArrayType([
                 [12]
-            ]), [12],
-            "number argument should be exist");
+            ])
+        ).to.eql([
+            [12]
+        ], "string argument should be removed");
 
+    })
+
+    it("match array multi type", () => {
+        function testArrayMultiType(arg) {
+            /**
+             * @ignore arg[string|number]
+             */
+            var checker = validator.getValidator(testArrayMultiType.name);
+            checker(Array.from(arguments));
+            return arg;
+        }
+
+        validator.registerValidator(testArrayMultiType);
+
+        expect(
+            testArrayMultiType(["ignore string"])
+        ).to.eql([
+            undefined
+        ], "string argument should be removed");
+
+
+        expect(
+            testArrayMultiType([12])).to.eql([
+            undefined
+        ], "number argument should be removed");
+
+        expect(
+            testArrayMultiType([true])).to.eql([
+            true
+        ], "boolean argument should be exist");
+    })
+
+    it("match object type", () => {
+        function testObjectType(arg) {
+            /**
+             * @ignore arg {
+             *      key1,
+             *      key2
+             * }
+             */
+            var checker = validator.getValidator(testObjectType.name);
+            checker(Array.from(arguments));
+            return arg;
+        }
+
+        validator.registerValidator(testObjectType);
+
+        expect(
+            testObjectType({
+                key1:"hello",
+                key2:"world"
+            })
+        ).to.eql({}, "string argument should be removed");
+
+
+        expect(
+            testObjectType([12])).to.eql([
+            undefined
+        ], "number argument should be removed");
+
+        expect(
+            testObjectType([true])).to.eql([
+            true
+        ], "boolean argument should be exist");
     })
 
 })
