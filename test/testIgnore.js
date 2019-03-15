@@ -9,11 +9,11 @@ describe("test @ignore", () => {
             /**
              * @ignore arg(string)
              */
-            var checker = validator.getValidator(testSingleType.name);
+            var checker = validator.getValidator("ignore_type_single");
             checker(Array.from(arguments));
             return arg;
         }
-        validator.registerValidator(testSingleType);
+        validator.registerValidator(testSingleType, "ignore_type_single");
 
         expect(() => {
             testSingleType("ignore string");
@@ -29,11 +29,11 @@ describe("test @ignore", () => {
             /**
              * @ignore arg(string|number)
              */
-            var checker = validator.getValidator(testMultiType.name);
+            var checker = validator.getValidator("ignore_type_multi");
             checker(Array.from(arguments));
             return arg;
         }
-        validator.registerValidator(testMultiType);
+        validator.registerValidator(testMultiType, "ignore_type_multi");
 
         expect(() => {
             testMultiType("ignore string");
@@ -53,7 +53,7 @@ describe("test @ignore", () => {
             /**
              * @ignore arg[[string]]
              */
-            var checker = validator.getValidator(testArrayType.name);
+            var checker = validator.getValidator(testArrayType.name, "ignore_array_single");
             checker(Array.from(arguments));
             return arg;
         }
@@ -84,12 +84,12 @@ describe("test @ignore", () => {
             /**
              * @ignore arg[string|number]
              */
-            var checker = validator.getValidator(testArrayMultiType.name);
+            var checker = validator.getValidator("ignore_array_multi");
             checker(Array.from(arguments));
             return arg;
         }
 
-        validator.registerValidator(testArrayMultiType);
+        validator.registerValidator(testArrayMultiType, "ignore_array_multi");
 
         expect(
             testArrayMultiType(["ignore string"])
@@ -113,34 +113,27 @@ describe("test @ignore", () => {
         function testObjectType(arg) {
             /**
              * @ignore arg {
-             *      key1,
-             *      key2
+             *      key1
              * }
              */
-            var checker = validator.getValidator(testObjectType.name);
+            var checker = validator.getValidator("ignore_object");
             checker(Array.from(arguments));
             return arg;
         }
 
-        validator.registerValidator(testObjectType);
+        validator.registerValidator(testObjectType, "ignore_object");
 
         expect(
             testObjectType({
-                key1:"hello",
-                key2:"world"
+                key1:"hello"
             })
-        ).to.eql({}, "string argument should be removed");
+        ).to.eql({key1:undefined}, "argument should be removed");
 
-
-        expect(
-            testObjectType([12])).to.eql([
-            undefined
-        ], "number argument should be removed");
 
         expect(
             testObjectType([true])).to.eql([
             true
-        ], "boolean argument should be exist");
+        ], "argument at key should be exist");
     })
 
 })

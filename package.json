@@ -7,13 +7,13 @@
     "test": "nodemon --exec mocha -R min"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "mocha": "^6.0.2"
   },
   "dependencies": {
     "chai": "^4.2.0",
     "chalk": "^2.4.2",
-    "hyron": "^2.5.13"
+    "hyron": "^2.6.0"
   }
 }

@@ -24,19 +24,16 @@ function getStructValidator(tag, index, varName, condition) {
 
     if (tag == "ignore") {
         var onChecked = (isMatch, key, val, origin) => {
-            console.log("isMatch : " + isMatch);
-            console.log("key : " + key);
-            console.log("val : " + val);
-            console.log("origin : ");
-            console.log(origin)
-            console.log();
+            // console.log("isMatch : " + isMatch);
+            // console.log("key : " + key);
+            // console.log("val : " + val);
+            // console.log("origin : ");
+            // console.log(origin)
+            // console.log();
 
             if (isMatch) {
                 if (typeof origin == 'object') {
-                    // objectEditor.replaceValue(key, origin, (child)=>{
-                    //     console.log(child);
-                    // });
-                    objectEditor.replaceValue(key, origin,undefined);
+                    objectEditor.replaceValue(key, origin, undefined);
                 } else {
                     throw new HTTPMessage(StatusCode.NOT_ACCEPTABLE,
                         `argument '${key}' is prohibited at variable '${val}'`);
@@ -45,8 +42,21 @@ function getStructValidator(tag, index, varName, condition) {
         }
     } else if (tag == "accept") {
         onChecked = (isMatch, key, val, origin) => {
+            console.log("isMatch : " + isMatch);
+            console.log("key : " + key);
+            console.log("val : " + val);
+            console.log("origin : ");
+            console.log(origin)
+            console.log();
+
             if (!isMatch) {
-                delete origin[key];
+                if (typeof origin == 'object') {
+                    objectEditor.replaceValue(key, origin, undefined);
+                } else {
+                    console.log("tttrrr")
+                    throw new HTTPMessage(StatusCode.NOT_ACCEPTABLE,
+                        `argument '${key}' is prohibited at variable '${val}'`);
+                }
             }
         }
     } else if (tag == "valid") {
@@ -70,7 +80,7 @@ function getStructValidator(tag, index, varName, condition) {
 function getCheckerEvents(func) {
     var rawFunc = func.toString();
     var comment = commentParser(rawFunc);
-    console.log(comment);
+    // console.log(comment);
     var argList = argumentParser(rawFunc);
     var validatorHolder = [];
 
