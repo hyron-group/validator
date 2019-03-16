@@ -42,12 +42,12 @@ function getStructValidator(tag, index, varName, condition) {
         }
     } else if (tag == "accept") {
         onChecked = (isMatch, key, val, origin) => {
-            console.log("isMatch : " + isMatch);
-            console.log("key : " + key);
-            console.log("val : " + val);
-            console.log("origin : ");
-            console.log(origin)
-            console.log();
+            // console.log("isMatch : " + isMatch);
+            // console.log("key : " + key);
+            // console.log("val : " + val);
+            // console.log("origin : ");
+            // console.log(origin)
+            // console.log();
 
             if (!isMatch) {
                 if (typeof origin == 'object') {
@@ -61,6 +61,14 @@ function getStructValidator(tag, index, varName, condition) {
         }
     } else if (tag == "valid") {
         onChecked = (isMatch, key, val, origin) => {
+            console.log("isMatch : " + isMatch);
+            console.log("key : " + key);
+            console.log("val : ");
+            console.log(val)
+            console.log("origin : ");
+            console.log(origin)
+            console.log();
+            
             if (!isMatch) {
                 throw new HTTPMessage(
                     StatusCode.NOT_ACCEPTABLE,
@@ -129,6 +137,8 @@ function registerValidator(func, eventName = func.name) {
 }
 
 module.exports = {
+    getConditionChecker : conditionMapping,
+    getStructChecker : structParser,
     registerValidator,
     getValidator
 }

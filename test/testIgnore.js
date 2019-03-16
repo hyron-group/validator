@@ -53,12 +53,12 @@ describe("test @ignore", () => {
             /**
              * @ignore arg[[string]]
              */
-            var checker = validator.getValidator(testArrayType.name, "ignore_array_single");
+            var checker = validator.getValidator("ignore_array_single");
             checker(Array.from(arguments));
             return arg;
         }
 
-        validator.registerValidator(testArrayType);
+        validator.registerValidator(testArrayType, "ignore_array_single");
 
         expect(
             testArrayType([
