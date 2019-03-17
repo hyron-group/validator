@@ -1,7 +1,7 @@
 {
   "name": "@hyron/validator",
   "version": "1.0.0",
-  "description": "Validate input used comment for HyronJS",
+  "description": "Validate input easier used comment",
   "main": "index.js",
   "scripts": {
     "test": "nodemon --exec mocha -R min",
@@ -13,9 +13,15 @@
   "devDependencies": {
     "mocha": "^6.0.2"
   },
+  "homepage": "https://github.com/hyron-group/validator",
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/hyron-group/validator"
+  },
+  "keywords": ["plugins", "hyron", "validator"],
   "dependencies": {
     "chai": "^4.2.0",
     "chalk": "^2.4.2",
-    "hyron": "^2.6.1"
+    "hyron": "^2.6.2"
   }
 }
