@@ -4,9 +4,11 @@
   "description": "Validate input used comment for HyronJS",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon --exec mocha -R min"
+    "test": "nodemon --exec mocha -R min",
+    "example": "nodemon ./test/example.js",
+    "hyron": "nodemon ./test/hyronExample.js"
   },
-  "author": "",
+  "author": "thangphung",
   "license": "MIT",
   "devDependencies": {
     "mocha": "^6.0.2"
@@ -14,6 +16,6 @@
   "dependencies": {
     "chai": "^4.2.0",
     "chalk": "^2.4.2",
-    "hyron": "^2.6.0"
+    "hyron": "^2.6.1"
   }
 }

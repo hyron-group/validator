@@ -63,11 +63,11 @@ function getStructValidator(tag, index, varName, condition) {
             // console.log("val : " + JSON.stringify(val));
             // console.log("origin : " + JSON.stringify(origin));
             // console.log();
-            
+
             if (!isMatch) {
                 throw new HTTPMessage(
                     StatusCode.NOT_ACCEPTABLE,
-                    `properties '${key}' is prohibited at variable '${varName}' : ${JSON.stringify(val)}`);
+                    `Attributes are not allowed at '${varName}' (${JSON.stringify(key)} : ${JSON.stringify(val)})`);
             }
         }
     }
@@ -132,8 +132,8 @@ function registerValidator(func, eventName = func.name) {
 }
 
 module.exports = {
-    getConditionChecker : conditionMapping,
-    getStructChecker : structParser,
+    getConditionChecker: conditionMapping,
+    getStructChecker: structParser,
     registerValidator,
     getValidator
 }

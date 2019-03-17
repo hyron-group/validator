@@ -4,7 +4,7 @@ class Demo {
     static requestConfig() {
         return {
             $all: {
-                plugins: ["validator"]
+                fontware: ["validator"]
             },
             testCheck: "post",
             testValid: "get",
@@ -50,7 +50,9 @@ class Demo {
 
 var myApp = hyron.getInstance(1234);
 myApp.enablePlugins({
-    validator: require('../src/fontware')
+    validator: {
+        fontware: require('../src/fontware')
+    }
 })
 myApp.enableServices({
     "": Demo

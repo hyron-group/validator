@@ -47,5 +47,5 @@ Validator.registerValidator(testCheck);
 
 // console.log(testValid("thang", 12)) 
 // console.log(testIgnore([32,54]))
-console.log(testAccept({cost:43, user:"thang", time:12}))
+console.log(testAccept({cost:43, time:12}))
 
