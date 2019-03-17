@@ -55,22 +55,23 @@ describe("test @valid", () => {
              */
             var checker = validator.getValidator("valid_array_single");
             checker(Array.from(arguments));
+            console.log("ttttt")
             return arg;
         }
 
         validator.registerValidator(testArrayType, "valid_array_single");
 
-        expect(
+        expect(() => {
             testArrayType([
-                ["valid string"]
+                ["valid single string"]
             ])
-        ).to.not.throw();
+        }).to.not.throw()
 
-        expect(
+        expect(() => {
             testArrayType([
                 [12]
             ])
-        ).to.throw();
+        }).to.throw();
     })
 
     it("match array multi type", () => {
@@ -86,14 +87,19 @@ describe("test @valid", () => {
         validator.registerValidator(testArrayMultiType, "valid_array_multi");
 
         expect(
-            testArrayMultiType(["valid string"])
+            () => {
+                testArrayMultiType(["valid multi string"])
+            }
         ).to.not.throw()
 
 
         expect(
-            testArrayMultiType([12])).to.not.throw();
-        expect(
-            testArrayMultiType([true])).to.throw()
+            () => {
+                testArrayMultiType([12])
+            }).to.not.throw();
+        expect(() => {
+            testArrayMultiType([true])
+        }).to.throw()
     })
 
     it("match object type", () => {
@@ -111,14 +117,16 @@ describe("test @valid", () => {
         validator.registerValidator(testObjectType, "valid_object");
 
         expect(
-            testObjectType({
-                key1: "hello"
-            })
+            () => {
+                testObjectType({
+                    key1: "hello"
+                })
+            }
         ).to.not.throw();
 
-
-        expect(
-            testObjectType([true])).to.throw();
+        expect(() => {
+            testObjectType([true])
+        }).to.throw();
     })
 
 })

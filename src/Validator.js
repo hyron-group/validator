@@ -53,7 +53,6 @@ function getStructValidator(tag, index, varName, condition) {
                 if (typeof origin == 'object') {
                     objectEditor.replaceValue(key, origin, undefined);
                 } else {
-                    console.log("tttrrr")
                     throw new HTTPMessage(StatusCode.NOT_ACCEPTABLE,
                         `argument '${key}' is prohibited at variable '${val}'`);
                 }
@@ -62,11 +61,9 @@ function getStructValidator(tag, index, varName, condition) {
     } else if (tag == "valid") {
         onChecked = (isMatch, key, val, origin) => {
             console.log("isMatch : " + isMatch);
-            console.log("key : " + key);
-            console.log("val : ");
-            console.log(val)
-            console.log("origin : ");
-            console.log(origin)
+            console.log("key : " + JSON.stringify(key));
+            console.log("val : " + JSON.stringify(val));
+            console.log("origin : " + JSON.stringify(origin));
             console.log();
             
             if (!isMatch) {
