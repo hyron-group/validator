@@ -25,10 +25,9 @@ function getStructValidator(tag, index, varName, condition) {
     if (tag == "ignore") {
         var onChecked = (isMatch, key, val, origin) => {
             // console.log("isMatch : " + isMatch);
-            // console.log("key : " + key);
-            // console.log("val : " + val);
-            // console.log("origin : ");
-            // console.log(origin)
+            // console.log("key : " + JSON.stringify(key));
+            // console.log("val : " + JSON.stringify(val));
+            // console.log("origin : " + JSON.stringify(origin));
             // console.log();
 
             if (isMatch) {
@@ -42,12 +41,11 @@ function getStructValidator(tag, index, varName, condition) {
         }
     } else if (tag == "accept") {
         onChecked = (isMatch, key, val, origin) => {
-            // console.log("isMatch : " + isMatch);
-            // console.log("key : " + key);
-            // console.log("val : " + val);
-            // console.log("origin : ");
-            // console.log(origin)
-            // console.log();
+            console.log("isMatch : " + isMatch);
+            console.log("key : " + JSON.stringify(key));
+            console.log("val : " + JSON.stringify(val));
+            console.log("origin : " + JSON.stringify(origin));
+            console.log();
 
             if (!isMatch) {
                 if (typeof origin == 'object') {
@@ -60,11 +58,11 @@ function getStructValidator(tag, index, varName, condition) {
         }
     } else if (tag == "valid") {
         onChecked = (isMatch, key, val, origin) => {
-            console.log("isMatch : " + isMatch);
-            console.log("key : " + JSON.stringify(key));
-            console.log("val : " + JSON.stringify(val));
-            console.log("origin : " + JSON.stringify(origin));
-            console.log();
+            // console.log("isMatch : " + isMatch);
+            // console.log("key : " + JSON.stringify(key));
+            // console.log("val : " + JSON.stringify(val));
+            // console.log("origin : " + JSON.stringify(origin));
+            // console.log();
             
             if (!isMatch) {
                 throw new HTTPMessage(

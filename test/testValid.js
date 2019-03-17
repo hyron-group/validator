@@ -55,7 +55,6 @@ describe("test @valid", () => {
              */
             var checker = validator.getValidator("valid_array_single");
             checker(Array.from(arguments));
-            console.log("ttttt")
             return arg;
         }
 
@@ -106,7 +105,7 @@ describe("test @valid", () => {
         function testObjectType(arg) {
             /**
              * @valid arg {
-             *      key1
+             *      key1(string)
              * }
              */
             var checker = validator.getValidator("valid_object");
@@ -125,7 +124,7 @@ describe("test @valid", () => {
         ).to.not.throw();
 
         expect(() => {
-            testObjectType([true])
+            testObjectType({key1:23})
         }).to.throw();
     })
 

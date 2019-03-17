@@ -5,7 +5,7 @@
  * - [@accept](../) : filter values from input if matched
  * - [@valid](../) : Only accept input parameters when it matches correctly
  * 
- * To know more about how to write validate condition, please visit [guide](https://github.com/hyron-group/plugins-validator/blob/master/readme.md)
+ * To know more about how to write validate condition, please visit [guide](https://github.com/hyron-group/validator/blob/master/readme.md)
  * 
  * ### **params**
  * - **func** ( function ) : target function will be used to parser validate condition
@@ -34,9 +34,9 @@ export function getValidator(eventName: string): (args) => void;
  * - **argsName** ( string ) : a name represent for input data
  * 
  * ### **return**
- * - **validator** ( function (args)=>void ) : a function that could be used to check function input data
+ * - **checker** ( function (input)=>void ) : a function that could be used to check function input data
  */
-export function getConditionChecker(argsName?: string, conditionMap: object): (input) => boolean;
+export function getConditionChecker(argsName: string, conditionMap: object): (input) => boolean;
 
 /**
  * A function that will be called on each key was checked. That could be used to notification or filter data
@@ -51,14 +51,15 @@ export function getConditionChecker(argsName?: string, conditionMap: object): (i
 declare function onChecked(isMatch: boolean, key: string, val: any, origin: any): void;
 
 /**
- * get checker by condition to validate input data
+ * get checker by condition to validate input structure of data, used [structure parser engine](https://github.com/hyron-group/validator/blob/master/docs/structure-parsser.engine.md)
  * 
  * ### **params**
  * - **struct** ( string ) : a structure that defined for input data
  * - **key** ( string ) : a key that represent for this input data
- * - **onChecked** ( string ) : a function that will be called for each time a key was check
+ * - **onChecked** ( function ) : a function that will be called for each time a key was check
  * 
  * ### **return**
- * - **validator** ( function (args)=>void ) : a function that could be used to check function input data
+ * - **index** ( number ) : last index of condition structure
+ * - **handler** ( (input)=>void ) : a function that could be used to check input structure
  */
-export function getStructChecker(struct: string, key?: string, onChecked: Function): { index: number, handler: (input) => any }
+export function getStructChecker(struct: string, key: string, onChecked: Function): { index: number, handler: (input) => any }

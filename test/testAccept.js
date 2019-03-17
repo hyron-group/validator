@@ -5,7 +5,6 @@ describe("test @accept", () => {
     var should = chai.should();
     var expect = chai.expect;
     it("match single type", () => {
-        console.log('accept')
 
         function testSingleType(arg) {
             /**
@@ -13,7 +12,6 @@ describe("test @accept", () => {
              */
             var checker = validator.getValidator("accept_type_single");
             checker(Array.from(arguments));
-            console.log("arg : " + arg);
             return arg;
         }
         validator.registerValidator(testSingleType, "accept_type_single");
@@ -34,7 +32,6 @@ describe("test @accept", () => {
              */
             var checker = validator.getValidator("accept_type_multi");
             checker(Array.from(arguments));
-            console.log("not throw")
             return arg;
         }
         validator.registerValidator(testMultiType, "accept_type_multi");

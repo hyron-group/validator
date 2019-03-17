@@ -237,3 +237,40 @@ Used to get a registered validator that have been registered before to check inp
   
 ### **return**
 - **validator** ( function (args)=>void ) : a function that could be used to check function input data
+
+
+> ## function **getConditionChecker**( argsName, conditionMap ) : checker
+
+ get checker by condition to validate input data
+  
+  ### **params**
+  - **argsName** ( string ) : a name represent for input data
+  
+  ### **return**
+  - **checker** ( function (args)=>boolean ) : a function that could be used to check function input data
+
+
+> ## function **getStructChecker** ( struct, key, onChecked ) : { index, handler }
+  get checker by condition to validate input structure of data used [structure parser engine](https://github.com/hyron-group/validator/blob/master/docs/structure-parsser.engine.md)
+  
+### **params**
+  - **struct** ( string ) : a structure that defined for input data
+  - **key** ( string ) : a key that represent for this input data
+  - **onChecked** ( function ) : a function that will be called for each time a key was check
+  
+ ### **return**
+ - **index** ( number ) : last index of condition structure
+ - **handler** ( (input)=>void ) : a function that could be used to check input structure
+
+
+> ## declared function **onChecked**( isMatch, key, val, origin) : void
+
+A function that will be called on each key was checked. That could be used to notification or filter data
+  
+### **params**
+
+- **isMatch** ( boolean ) : check if this input data is match
+- **key** ( string ) : A key of object or is index of array that will be checked
+- **val** ( any ) : value that was checked on current key
+- **origin** ( any ) : origin input data
+  
