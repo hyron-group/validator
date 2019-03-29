@@ -1,6 +1,6 @@
 {
   "name": "@hyron/validator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Validate input easier used comment",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,11 @@
     "type": "github",
     "url": "https://github.com/hyron-group/validator"
   },
-  "keywords": ["plugins", "hyron", "validator"],
+  "keywords": [
+    "plugins",
+    "hyron",
+    "validator"
+  ],
   "dependencies": {
     "chai": "^4.2.0",
     "chalk": "^2.4.2",
