@@ -1,6 +1,10 @@
+
+[![Build status](https://ci.appveyor.com/api/projects/status/scqq323ay7cilq79?svg=true)](https://ci.appveyor.com/project/thangdjw/validator)
+![Gitter](https://img.shields.io/gitter/room/hyron-group/community.svg)
+![npm](https://img.shields.io/npm/dm/@hyron/validator.svg)
+
+
 **@hyron/validator** is a powerful library for validate input of function for more security
-
-
 
 ## Feature
 
