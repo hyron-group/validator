@@ -131,9 +131,25 @@ function registerValidator(func, eventName = func.name) {
     return validator;
 }
 
+function getConditionChecker(condition) {
+    return conditionMapping(undefined, condition);
+}
+
+function getStructureChecker(struct, onChecked) {
+    if (onChecked == null) {
+        onChecked = (isMatch, key = "input", val, origin) => {
+            if (!isMatch) throw new HTTPMessage(
+                StatusCode.NOT_ACCEPTABLE,
+                `Invalid param '${key}', check if argument satisfying conditions '${struct}'`
+            );
+        }
+    }
+    return structParser(struct, undefined, onChecked).handler;
+}
+
 module.exports = {
-    getConditionChecker: conditionMapping,
-    getStructChecker: structParser,
+    getConditionChecker,
+    getStructureChecker,
     registerValidator,
     getValidator
 }

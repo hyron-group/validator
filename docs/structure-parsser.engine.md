@@ -6,6 +6,8 @@
 
 # Usage
 
+![](./res/struct-validate-schema.png)
+
 ## **1. Type Define**
 Used to check type of a input data. To define type of a target input used :
 

@@ -27,16 +27,49 @@ export function registerValidator(func: Function, eventName?: string): (args) =>
  */
 export function getValidator(eventName: string): (args) => void;
 
+declare interface Condition {
+    /** Allow input nullable or not */
+    nullable: boolean
+    /** Size of input data. Support for unit KB, MB, GB */
+    size: string | number,
+    /** Check if input string with length greater than a number */
+    length_from: number,
+    /** Check if input string with length less than a number */
+    length_to: number,
+    /** Check type of input data. It also supported for ClientFile */
+    type: any,
+    /** Check mime type of input if type is ClientFile */
+    mime: string,
+    /** Check input if it less than a number */
+    lt: number,
+    /** Check input if it greater than a number */
+    gt: number,
+    /** Check input if it less than or equal a number */
+    lte: number,
+    /** Check input if it greater than or equal a number */
+    gte: number,
+    /** Check input if it equal a value */
+    eq: any,
+    /** Check input if it not equal a value */
+    ne: any,
+    /** Check input if it value inside a array of value */
+    in: [any],
+    /** Check input if it value not inside a array of value */
+    nin: [any],
+    /** Check input if it match a regex */
+    reg: RegExp,
+}
+
 /**
  * get checker by condition to validate input data
  * 
  * ### **params**
- * - **argsName** ( string ) : a name represent for input data
+ * - **condition** ( object ) : a name represent for input data
  * 
  * ### **return**
  * - **checker** ( function (input)=>void ) : a function that could be used to check function input data
  */
-export function getConditionChecker(argsName: string, conditionMap: object): (input) => boolean;
+export function getConditionChecker(condition: Condition): (input) => boolean;
 
 /**
  * A function that will be called on each key was checked. That could be used to notification or filter data
@@ -55,11 +88,9 @@ declare function onChecked(isMatch: boolean, key: string, val: any, origin: any)
  * 
  * ### **params**
  * - **struct** ( string ) : a structure that defined for input data
- * - **key** ( string ) : a key that represent for this input data
  * - **onChecked** ( function ) : a function that will be called for each time a key was check
  * 
  * ### **return**
- * - **index** ( number ) : last index of condition structure
  * - **handler** ( (input)=>void ) : a function that could be used to check input structure
  */
-export function getStructChecker(struct: string, key: string, onChecked: Function): { index: number, handler: (input) => any }
+export function getStructureChecker(struct: string, onChecked: Function): (input) => any
