@@ -93,4 +93,4 @@ declare function onChecked(isMatch: boolean, key: string, val: any, origin: any)
  * ### **return**
  * - **handler** ( (input)=>void ) : a function that could be used to check input structure
  */
-export function getStructureChecker(struct: string, onChecked: Function): (input) => any
+export function getStructureChecker(struct: string, onChecked?: Function): (input) => any

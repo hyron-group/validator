@@ -112,11 +112,12 @@ Used to get a registered validator that have been registered before to check inp
   - (input)=>boolean : a function that could be used to check function input data
 
 
-> ## function **getStructureChecker** ( struct ) : (input)=>void
+> ## function **getStructureChecker** ( struct, onChecked? ) : (input)=>void
   get checker by condition to validate input structure of data used [structure parser engine](https://github.com/hyron-group/validator/blob/master/docs/structure-parser.engine.md)
   
 ### **params**
   - **struct** ( string ) : a structure that defined for input data
+  - **onChecked** ( function ) : a function that will be called for each time data was check
   
  ### **return**
  - (input)=>void : a function that could be used to check input structure
