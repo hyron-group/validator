@@ -1,6 +1,6 @@
 {
   "name": "@hyron/validator",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Validate input easier used comment",
   "main": "index.js",
   "scripts": {
