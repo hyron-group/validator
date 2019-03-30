@@ -136,6 +136,8 @@ function getConditionChecker(condition) {
 }
 
 function getStructureChecker(struct, onChecked) {
+    struct = struct.replace(/\s+/g, "");
+
     if (onChecked == null) {
         onChecked = (isMatch, key = "input", val, origin) => {
             if (!isMatch) throw new HTTPMessage(
