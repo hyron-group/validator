@@ -11,7 +11,7 @@ Attentive : this package **only support for multi-line comment type** (/** or /*
 **Validator** support for 4 type of validator via comment :
   - [1. ``@check`` : check a argument if match](#1-check--check-a-argument-if-match)
   - [2. ``@ignore`` : remove a nominated properties from argument](#2-ignore--remove-a-nominated-properties-from-argument)
-  - [3. ``@except`` : filter out the required values](#3-except--filter-out-the-required-values)
+  - [3. ``@accept`` : filter out the required values](#3-accept--filter-out-the-required-values)
   - [4. ``@valid`` : strictly check the input value](#4-valid--strictly-check-the-input-value)
 
 Example
@@ -149,7 +149,7 @@ As you see, **@ignore** could used to check value of a variable, see if it fits 
 
 It could be used to against a no-sql inject, or for safe value before use this
 
-## 3. ``@except`` : filter out the required values
+## 3. ``@accept`` : filter out the required values
 
 ### **Syntax**
 ```js
